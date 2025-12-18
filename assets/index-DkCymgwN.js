@@ -257,22 +257,22 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.6);
         }
         
-        /* --- RESPONSIVE OPEN STATES --- */
+        /* --- RESPONSIVE OPEN STATES (FIXED) --- */
 
         .book-open { 
-          /* MOBILE (Default): Center, scale down, do NOT move right */
-          transform: translateX(0%) rotateY(0deg) rotateX(0deg) scale(0.65) !important;
+          /* MOBILE: Move Spine to Center (50%), Shrink to fit (0.55) */
+          transform: translateX(50%) rotateY(0deg) rotateX(0deg) scale(0.55) !important;
           box-shadow: 20px 20px 60px rgba(0,0,0,0.4);
           animation: none;
         }
 
         .book-open-last {
-          /* MOBILE (Default): Center, scale down */
-          transform: translateX(0%) rotateY(0deg) scale(0.65) !important;
+          /* MOBILE: Move Spine to Center, Shrink */
+          transform: translateX(100%) rotateY(0deg) scale(0.55) !important;
           box-shadow: none;
         }
 
-        /* DESKTOP (Larger screens): Move right and scale up */
+        /* DESKTOP (Larger screens): Use standard scaling */
         @media (min-width: 768px) {
            .book-open { 
              transform: translateX(50%) rotateY(0deg) rotateX(0deg) scale(1.05) !important;
@@ -382,7 +382,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         .animate-fade-in-button {
           animation: fadeInButton 0.8s ease-out forwards;
         }
-      `}),C.jsxs("div",{className:`relative w-[90vw] max-w-[350px] h-[550px] md:w-[450px] md:h-[650px] book-container ${e?V?"book-open-last":"book-open":""} ${n?"book-closing":""}`,children:[C.jsxs("div",{className:`absolute inset-0 w-full h-full book-cover ${e?"flipped":""}`,children:[C.jsxs("div",{className:"absolute inset-0 w-full h-full bg-black text-white backface-hidden rounded-r-lg rounded-l-sm shadow-2xl flex flex-col items-center p-8 border-l-4 border-zinc-900 overflow-hidden cursor-pointer",onMouseMove:z,onMouseLeave:X,onClick:()=>!e&&H(),style:{backgroundColor:"#000000"},children:[C.jsx("div",{className:"absolute inset-[-40px] opacity-10 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none transition-transform duration-200 ease-out",style:{transform:`translate(${d.x*-20}px, ${d.y*-20}px) scale(1.1)`}}),C.jsx("div",{className:"absolute inset-0 pointer-events-none mix-blend-soft-light transition-opacity duration-300",style:{background:`radial-gradient(circle at ${50+d.x*40}% ${50+d.y*40}%, rgba(197,160,89,0.2), transparent 70%)`,opacity:e?0:1}}),C.jsx("div",{className:"absolute inset-0 pointer-events-none opacity-20 mix-blend-overlay transition-opacity duration-300",style:{background:`radial-gradient(circle at ${50+d.x*80}% ${50+d.y*80}%, rgba(255,255,255,0.8), transparent 50%)`,opacity:e?0:.2}}),C.jsxs("div",{className:"absolute top-5 right-5 z-40",ref:_,children:[C.jsxs("button",{onClick:ie=>{ie.stopPropagation(),b(!g)},className:"flex items-center gap-2 bg-black/40 backdrop-blur-md border border-white/10 hover:border-[#C5A059]/50 hover:bg-black/60 text-white px-3 py-1.5 rounded-full transition-all shadow-lg group",children:[ne&&C.jsx("img",{src:`https://flagcdn.com/w40/${ne.flag}.png`,alt:ne.name,className:"w-4 h-3 object-cover rounded-[1px] shadow-sm opacity-90"}),C.jsx("span",{className:"text-xs font-medium uppercase tracking-wider text-neutral-300 group-hover:text-[#C5A059] transition-colors",children:ne==null?void 0:ne.code}),C.jsx(Z5,{size:14,className:`text-neutral-400 transition-transform duration-300 ${g?"rotate-180 text-[#C5A059]":""}`})]}),C.jsx("div",{className:`
+      `}),C.jsxs("div",{className:`relative w-[300px] h-[480px] md:w-[450px] md:h-[650px] book-container ${e?V?"book-open-last":"book-open":""} ${n?"book-closing":""}`,children:[C.jsxs("div",{className:`absolute inset-0 w-full h-full book-cover ${e?"flipped":""}`,children:[C.jsxs("div",{className:"absolute inset-0 w-full h-full bg-black text-white backface-hidden rounded-r-lg rounded-l-sm shadow-2xl flex flex-col items-center p-8 border-l-4 border-zinc-900 overflow-hidden cursor-pointer",onMouseMove:z,onMouseLeave:X,onClick:()=>!e&&H(),style:{backgroundColor:"#000000"},children:[C.jsx("div",{className:"absolute inset-[-40px] opacity-10 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] pointer-events-none transition-transform duration-200 ease-out",style:{transform:`translate(${d.x*-20}px, ${d.y*-20}px) scale(1.1)`}}),C.jsx("div",{className:"absolute inset-0 pointer-events-none mix-blend-soft-light transition-opacity duration-300",style:{background:`radial-gradient(circle at ${50+d.x*40}% ${50+d.y*40}%, rgba(197,160,89,0.2), transparent 70%)`,opacity:e?0:1}}),C.jsx("div",{className:"absolute inset-0 pointer-events-none opacity-20 mix-blend-overlay transition-opacity duration-300",style:{background:`radial-gradient(circle at ${50+d.x*80}% ${50+d.y*80}%, rgba(255,255,255,0.8), transparent 50%)`,opacity:e?0:.2}}),C.jsxs("div",{className:"absolute top-5 right-5 z-40",ref:_,children:[C.jsxs("button",{onClick:ie=>{ie.stopPropagation(),b(!g)},className:"flex items-center gap-2 bg-black/40 backdrop-blur-md border border-white/10 hover:border-[#C5A059]/50 hover:bg-black/60 text-white px-3 py-1.5 rounded-full transition-all shadow-lg group",children:[ne&&C.jsx("img",{src:`https://flagcdn.com/w40/${ne.flag}.png`,alt:ne.name,className:"w-4 h-3 object-cover rounded-[1px] shadow-sm opacity-90"}),C.jsx("span",{className:"text-xs font-medium uppercase tracking-wider text-neutral-300 group-hover:text-[#C5A059] transition-colors",children:ne==null?void 0:ne.code}),C.jsx(Z5,{size:14,className:`text-neutral-400 transition-transform duration-300 ${g?"rotate-180 text-[#C5A059]":""}`})]}),C.jsx("div",{className:`
                   absolute right-0 top-full mt-2 w-40 
                   bg-[#0a0a0a]/95 backdrop-blur-xl border border-white/10 
                   rounded-lg shadow-2xl overflow-hidden transition-all duration-300 origin-top-right z-50
