@@ -1,54 +1,25 @@
-// src/QuizPage.tsx
 import React, { useState, useEffect } from 'react';
-import { Timer, CheckCircle, XCircle, ChevronRight, Search, Phone, Mail, User, RotateCcw, Gift, Trophy } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { CheckCircle, XCircle, Trophy, X, ChevronDown, Search } from 'lucide-react';
+import { LOGO_URL, APP_TEXT, QUIZ_QUESTIONS, COUNTRY_CODES } from './constants';
 
-// --- CONFIGURATION ---
-const PASSING_SCORE = 7;
-const TIME_LIMIT = 60; // seconds
+interface QuizProps { onClose: () => void; lang: string; }
 
-const QUESTIONS = [
-  { q: "What is the primary currency used in Dubai?", options: ["Dollar", "Dirham", "Euro", "Dinar"], a: 1 },
-  { q: "Which of these is a freehold area?", options: ["Deira", "Dubai Marina", "Bur Dubai", "Al Qusais"], a: 1 },
-  { q: "What is the standard down payment for off-plan?", options: ["50%", "20%", "5%", "100%"], a: 1 },
-  { q: "Is property income tax-free in Dubai?", options: ["Yes", "No", "Only for residents", "Partially"], a: 0 },
-  { q: "What is the DLD fee?", options: ["2%", "4%", "5%", "1%"], a: 1 },
-  { q: "Can foreigners buy property in Dubai?", options: ["No", "Yes (Freehold areas)", "Yes (Anywhere)", "With a sponsor"], a: 1 },
-  { q: "What is the capital of the UAE?", options: ["Dubai", "Abu Dhabi", "Sharjah", "Ajman"], a: 1 },
-  { q: "Which tower is the tallest in the world?", options: ["Shanghai Tower", "Burj Khalifa", "CN Tower", "Clock Tower"], a: 1 },
-  { q: "What is the RERA rental index used for?", options: ["Selling", "Rent Increases", "Buying", "Visas"], a: 1 },
-  { q: "What represents a Title Deed?", options: ["Proof of Ownership", "Rental Contract", "Visa", "Payment Plan"], a: 0 },
-];
-
-const COUNTRY_CODES = [
-  { code: "+971", country: "UAE" },
-  { code: "+1", country: "USA/Canada" },
-  { code: "+44", country: "UK" },
-  { code: "+91", country: "India" },
-  { code: "+92", country: "Pakistan" },
-  { code: "+966", country: "Saudi Arabia" },
-  { code: "+7", country: "Russia" },
-  { code: "+86", country: "China" },
-  { code: "+33", country: "France" },
-  { code: "+49", country: "Germany" },
-];
-
-export default function QuizPage() {
-  const [step, setStep] = useState<'start' | 'quiz' | 'fail' | 'lead' | 'success'>('start');
+export default function QuizPage({ onClose, lang }: QuizProps) {
+  const t = APP_TEXT[lang] || APP_TEXT['en'];
+  const [step, setStep] = useState<'start' | 'quiz' | 'fail' | 'lead' | 'success' | 'funny'>('start');
   const [currentQ, setCurrentQ] = useState(0);
   const [score, setScore] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(TIME_LIMIT);
-  
-  // Lead Form State
-  const [leadTitle, setLeadTitle] = useState('Mr.');
+  const [timeLeft, setTimeLeft] = useState(60);
+   
   const [leadName, setLeadName] = useState('');
   const [leadEmail, setLeadEmail] = useState('');
-  const [leadPhone, setLeadPhone] = useState('');
-  const [countryCode, setCountryCode] = useState('+971');
-  const [searchCode, setSearchCode] = useState('');
-  const [showDropdown, setShowDropdown] = useState(false);
+  const [phoneCode, setPhoneCode] = useState('+971');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isCodeOpen, setIsCodeOpen] = useState(false);
+  const [searchCode, setSearchCode] = useState('');
 
-  // Timer Logic
   useEffect(() => {
     let timer: any;
     if (step === 'quiz' && timeLeft > 0) {
@@ -57,292 +28,155 @@ export default function QuizPage() {
       finishQuiz(score);
     }
     return () => clearInterval(timer);
-  }, [step, timeLeft]);
+  }, [step, timeLeft, score]);
 
-  const handleStart = () => {
-    setStep('quiz');
-    setTimeLeft(TIME_LIMIT);
-    setCurrentQ(0);
-    setScore(0);
-  };
+  const handleStart = () => { setStep('quiz'); setTimeLeft(60); setCurrentQ(0); setScore(0); };
+  const finishQuiz = (finalScore: number) => { if (finalScore >= 7) setStep('funny'); else setStep('fail'); };
 
   const handleAnswer = (optionIndex: number) => {
-    const isCorrect = optionIndex === QUESTIONS[currentQ].a;
+    const isCorrect = optionIndex === QUIZ_QUESTIONS[currentQ].correctAnswer;
     const newScore = isCorrect ? score + 1 : score;
     setScore(newScore);
-    
-    if (currentQ < QUESTIONS.length - 1) {
-      setCurrentQ((c) => c + 1);
-    } else {
-      finishQuiz(newScore);
-    }
-  };
-
-  const finishQuiz = (finalScore: number) => {
-    if (finalScore >= PASSING_SCORE) {
-      setStep('lead');
-    } else {
-      setStep('fail');
-    }
+    if (currentQ < QUIZ_QUESTIONS.length - 1) setCurrentQ(c => c + 1);
+    else finishQuiz(newScore);
   };
 
   const submitLead = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    // Prepare data for FormSubmit
-    const formData = {
-      _subject: `New VIP Lead: ${leadName} (Score: ${score}/10)`,
-      title: leadTitle,
-      name: leadName,
-      email: leadEmail,
-      phone: `${countryCode} ${leadPhone}`,
-      score: `${score}/10`,
-      status: "PASSED - VIP ELIGIBLE"
-    };
-
+    const fullPhone = `${phoneCode} ${phoneNumber}`;
     try {
-      // Send to FormSubmit (Free Email Service)
       await fetch("https://formsubmit.co/ajax/contact@mapstonegroup.com", {
-        method: "POST",
-        headers: { 
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(formData)
+        method: "POST", 
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+            name: leadName, 
+            email: leadEmail, 
+            phone: fullPhone, 
+            score: `${score}/10`, 
+            language: lang,
+            subject: `New VIP Winner - Score: ${score}/10` 
+        })
       });
-      
       setStep('success');
-    } catch (error) {
-      console.error("Submission error", error);
-      // Even if error, show success to user so they don't panic, but log it.
-      setStep('success'); 
-    } finally {
-      setIsSubmitting(false);
-    }
+    } catch (e) { setStep('success'); } finally { setIsSubmitting(false); }
   };
 
   const filteredCodes = COUNTRY_CODES.filter(c => 
-    c.country.toLowerCase().includes(searchCode.toLowerCase()) || 
-    c.code.includes(searchCode)
+      c.country.toLowerCase().includes(searchCode.toLowerCase()) || c.code.includes(searchCode)
   );
 
+  const currentQuestionData = QUIZ_QUESTIONS[currentQ];
+  const questionText = (currentQuestionData.question as any)[lang] || (currentQuestionData.question as any)['en'];
+
   return (
-    <div className="h-full w-full bg-zinc-900 text-white p-8 flex flex-col items-center justify-center font-sans overflow-y-auto">
-      
-      {/* Header / Timer */}
-      <div className="w-full flex justify-between items-center mb-6 border-b border-white/10 pb-4">
-        <h2 className="text-[#C5A059] font-serif text-xl">Investment Qualification</h2>
-        {step === 'quiz' && (
-          <div className={`flex items-center gap-2 font-mono ${timeLeft < 10 ? 'text-red-500 animate-pulse' : 'text-slate-400'}`}>
-            <Timer size={16} />
-            <span>00:{timeLeft.toString().padStart(2, '0')}</span>
-          </div>
-        )}
-      </div>
+    <div className="fixed inset-0 z-[99999] flex items-center justify-center bg-black/90 backdrop-blur-xl p-4">
+        {/* Added max-h-[90vh] and overflow-y-auto to fix landscape mobile issues */}
+        <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }} 
+            animate={{ opacity: 1, scale: 1 }} 
+            className="w-full max-w-lg bg-zinc-900 border border-white/10 rounded-2xl p-4 md:p-6 relative shadow-2xl max-h-[95vh] overflow-y-auto custom-scrollbar"
+        >
+            <button onClick={onClose} className="absolute top-4 right-4 text-slate-500 hover:text-white z-50"><X size={24} /></button>
+            <img src={LOGO_URL} alt="Logo" className="h-8 md:h-10 mx-auto mb-4 md:mb-6 opacity-80" />
+            
+            {step === 'start' && (
+                <div className="text-center space-y-4 md:space-y-6">
+                    <h3 className="text-xl md:text-2xl font-serif text-[#C5A059]">{t.quizTitle}</h3>
+                    <p className="text-slate-300 text-sm">{t.quizSubtitle}</p>
+                    <button onClick={handleStart} className="w-full py-3 bg-[#C5A059] text-black font-bold rounded transition-transform active:scale-95">{t.quizBtn}</button>
+                </div>
+            )}
 
-      {/* --- START SCREEN --- */}
-      {step === 'start' && (
-        <div className="text-center space-y-6">
-          <div className="w-16 h-16 bg-[#C5A059]/10 rounded-full flex items-center justify-center mx-auto animate-pulse">
-            <Gift size={32} className="text-[#C5A059]" />
-          </div>
-          <h3 className="text-2xl font-serif text-white">Unlock Your VIP Gift</h3>
-          <p className="text-slate-300 leading-relaxed text-sm max-w-xs mx-auto">
-            Score <strong>7/10</strong> or higher to prove your market knowledge. 
-            Successful candidates receive our <strong>exclusive dossier</strong> and a special VIP gift upon consultation.
-          </p>
-          <div className="text-xs text-slate-500 bg-white/5 p-3 rounded-lg border border-white/5">
-            Time Limit: {TIME_LIMIT}s • Questions: {QUESTIONS.length}
-          </div>
-          <button onClick={handleStart} className="px-8 py-3 bg-[#C5A059] text-black font-bold rounded hover:bg-[#b08d4b] transition-colors w-full shadow-[0_0_15px_rgba(197,160,89,0.3)]">
-            Start Challenge
-          </button>
-        </div>
-      )}
-
-      {/* --- QUIZ SCREEN --- */}
-      {step === 'quiz' && (
-        <div className="w-full max-w-md">
-          <div className="mb-2 text-xs text-[#C5A059] uppercase tracking-widest flex justify-between">
-             <span>Question {currentQ + 1} / {QUESTIONS.length}</span>
-          </div>
-          <h3 className="text-lg font-medium mb-6 text-white min-h-[60px]">{QUESTIONS[currentQ].q}</h3>
-          
-          <div className="space-y-3">
-            {QUESTIONS[currentQ].options.map((opt, idx) => (
-              <button
-                key={idx}
-                onClick={() => handleAnswer(idx)}
-                className="w-full text-left p-4 rounded border border-white/10 hover:border-[#C5A059] hover:bg-white/5 transition-all flex justify-between group"
-              >
-                <span className="text-slate-300 group-hover:text-white text-sm">{opt}</span>
-                <ChevronRight size={16} className="opacity-0 group-hover:opacity-100 text-[#C5A059] transition-opacity" />
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* --- FAIL SCREEN --- */}
-      {step === 'fail' && (
-        <div className="text-center space-y-6">
-          <XCircle size={64} className="text-red-500 mx-auto" />
-          <h3 className="text-2xl font-serif text-white">Nice Try!</h3>
-          <p className="text-slate-400">
-            You scored <strong className="text-white">{score}/10</strong>. <br/>
-            The market is tough, but so are you. Brush up on your facts and try again to unlock the VIP status.
-          </p>
-          <button onClick={handleStart} className="flex items-center justify-center gap-2 px-8 py-3 bg-white/10 text-white font-bold rounded hover:bg-white/20 transition-colors w-full">
-            <RotateCcw size={18} />
-            Try Again
-          </button>
-        </div>
-      )}
-
-      {/* --- LEAD FORM SCREEN --- */}
-      {step === 'lead' && (
-        <form onSubmit={submitLead} className="w-full max-w-md space-y-4">
-          <div className="text-center mb-4">
-            <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
-                <Trophy size={24} className="text-green-500" />
-            </div>
-            <h3 className="text-xl font-serif text-white">Impressive Score: {score}/10!</h3>
-            <p className="text-xs text-slate-400">
-              You know your Dirhams from your Dollars. Fill in your details below to claim your <strong>VIP Gift</strong>.
-            </p>
-          </div>
-
-          <div className="flex gap-2">
-            {/* Title Selector */}
-            <select 
-                value={leadTitle} 
-                onChange={(e) => setLeadTitle(e.target.value)}
-                className="bg-black/40 border border-white/10 rounded p-3 text-white outline-none focus:border-[#C5A059] w-20 text-sm"
-            >
-                <option value="Mr.">Mr.</option>
-                <option value="Ms.">Ms.</option>
-                <option value="Mrs.">Mrs.</option>
-                <option value="Dr.">Dr.</option>
-            </select>
-
-            <div className="relative group flex-1">
-                <User className="absolute left-3 top-3 text-slate-500 group-focus-within:text-[#C5A059]" size={18} />
-                <input 
-                required 
-                type="text" 
-                placeholder="Last Name" 
-                className="w-full bg-black/40 border border-white/10 rounded p-3 pl-10 focus:border-[#C5A059] outline-none text-white placeholder:text-slate-600 text-sm"
-                value={leadName}
-                onChange={(e) => setLeadName(e.target.value)}
-                />
-            </div>
-          </div>
-
-          <div className="relative group">
-            <Mail className="absolute left-3 top-3 text-slate-500 group-focus-within:text-[#C5A059]" size={18} />
-            <input 
-              required 
-              type="email" 
-              placeholder="Email Address" 
-              className="w-full bg-black/40 border border-white/10 rounded p-3 pl-10 focus:border-[#C5A059] outline-none text-white placeholder:text-slate-600 text-sm"
-              value={leadEmail}
-              onChange={(e) => setLeadEmail(e.target.value)}
-            />
-          </div>
-
-          <div className="flex gap-2 relative">
-             {/* Country Code Dropdown */}
-             <div className="relative w-1/3">
-                <button 
-                  type="button"
-                  onClick={() => setShowDropdown(!showDropdown)}
-                  className="w-full bg-black/40 border border-white/10 rounded p-3 flex justify-between items-center text-sm text-slate-300 focus:border-[#C5A059]"
-                >
-                  {countryCode}
-                </button>
-                
-                {showDropdown && (
-                  <div className="absolute bottom-full mb-1 left-0 w-full bg-zinc-800 border border-white/10 rounded shadow-xl max-h-48 overflow-y-auto z-50">
-                    <div className="p-2 sticky top-0 bg-zinc-800 border-b border-white/5">
-                      <div className="flex items-center bg-black/50 rounded px-2">
-                        <Search size={12} className="text-slate-500" />
-                        <input 
-                          autoFocus
-                          className="w-full bg-transparent p-2 text-xs text-white outline-none" 
-                          placeholder="Search..." 
-                          onChange={(e) => setSearchCode(e.target.value)}
-                        />
-                      </div>
+            {step === 'quiz' && (
+                <div className="space-y-4 md:space-y-6">
+                    <div className="flex justify-between text-xs text-slate-500 font-medium">
+                          <span>{t.questionProgress} {currentQ + 1} / {QUIZ_QUESTIONS.length}</span>
+                          <span className="font-mono text-[#C5A059]">{timeLeft}s</span>
                     </div>
-                    {filteredCodes.map((c) => (
-                      <div 
-                        key={c.code} 
-                        className="p-2 hover:bg-white/5 cursor-pointer text-xs flex justify-between text-slate-300"
-                        onClick={() => {
-                          setCountryCode(c.code);
-                          setShowDropdown(false);
-                        }}
-                      >
-                        <span className="truncate w-16">{c.country}</span>
-                        <span className="text-[#C5A059]">{c.code}</span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-             </div>
+                    <h3 className="text-base md:text-lg text-white font-medium min-h-[50px] md:min-h-[60px] flex items-center">{questionText}</h3>
+                    <div className="space-y-2 md:space-y-3">
+                        {currentQuestionData.options.map((opt: string, idx: number) => (
+                        <button key={idx} onClick={() => handleAnswer(idx)} className="w-full text-left p-3 md:p-4 rounded bg-white/5 border border-white/10 hover:border-[#C5A059] hover:bg-white/10 text-slate-300 text-sm transition-all">{opt}</button>
+                        ))}
+                    </div>
+                </div>
+            )}
 
-             <div className="relative group flex-1">
-                <Phone className="absolute left-3 top-3 text-slate-500 group-focus-within:text-[#C5A059]" size={18} />
-                <input 
-                  required 
-                  type="tel" 
-                  placeholder="Phone Number" 
-                  className="w-full bg-black/40 border border-white/10 rounded p-3 pl-10 focus:border-[#C5A059] outline-none text-white placeholder:text-slate-600 text-sm"
-                  value={leadPhone}
-                  onChange={(e) => setLeadPhone(e.target.value)}
-                />
-             </div>
-          </div>
+            {step === 'funny' && (
+                <div className="text-center space-y-4 md:space-y-6">
+                    <motion.div initial={{ scale: 0 }} animate={{ scale: 1, rotate: 360 }} transition={{ type: "spring" }}>
+                        <div className="text-5xl md:text-6xl">😎</div>
+                    </motion.div>
+                    <h3 className="text-xl md:text-2xl font-bold text-[#C5A059]">{t.funnyTitle}</h3>
+                    <div className="bg-white/10 p-3 md:p-4 rounded-lg">
+                        <p className="text-white text-base md:text-lg">Score: {score}/10</p>
+                    </div>
+                    <p className="text-lg md:text-xl font-bold text-white py-2 md:py-4">{t.funnyQ}</p>
+                    <button onClick={() => setStep('lead')} className="w-full py-3 md:py-4 bg-[#C5A059] text-black font-bold rounded-lg hover:scale-105 transition-transform">{t.funnyBtn}</button>
+                </div>
+            )}
 
-          <button 
-            type="submit" 
-            disabled={isSubmitting}
-            className="w-full py-3 bg-[#C5A059] text-black font-bold rounded hover:bg-[#b08d4b] transition-colors mt-4 flex justify-center items-center gap-2"
-          >
-            {isSubmitting ? 'Sending...' : 'Claim VIP Status'}
-            {!isSubmitting && <ChevronRight size={16} />}
-          </button>
-        </form>
-      )}
+            {step === 'fail' && (
+                <div className="text-center space-y-4 md:space-y-6">
+                    <XCircle size={64} className="text-red-500 mx-auto" />
+                    <h3 className="text-xl text-white">{t.resultFailTitle}</h3>
+                    <p className="text-white">Score: {score}/10</p>
+                    <button onClick={handleStart} className="w-full py-3 bg-white/10 text-white rounded font-bold">{t.retryBtn}</button>
+                </div>
+            )}
 
-      {/* --- SUCCESS SCREEN --- */}
-      {step === 'success' && (
-        <div className="text-center space-y-6">
-          <div className="w-20 h-20 bg-[#C5A059]/20 rounded-full flex items-center justify-center mx-auto ring-2 ring-[#C5A059] ring-offset-4 ring-offset-zinc-900 animate-pulse">
-            <CheckCircle size={40} className="text-[#C5A059]" />
-          </div>
-          
-          <div className="space-y-2">
-            <h3 className="text-2xl font-serif text-white">
-                Welcome to the Inner Circle, <br/> 
-                <span className="text-[#C5A059]">{leadTitle} {leadName}</span>
-            </h3>
-            <p className="text-slate-300 text-sm italic">
-                "Real estate is not about structures, it's about people."
-            </p>
-          </div>
+            {step === 'lead' && (
+                <form onSubmit={submitLead} className="space-y-3 md:space-y-4">
+                    <Trophy size={48} className="text-[#C5A059] mx-auto mb-2" />
+                    <h3 className="text-lg md:text-xl text-center text-white">{t.resultPassTitle}</h3>
+                     
+                    <div className="space-y-3">
+                        <input required placeholder={t.labelName} className="w-full bg-black/40 border border-white/10 rounded p-3 text-white outline-none focus:border-[#C5A059] text-sm" value={leadName} onChange={e => setLeadName(e.target.value)} />
+                        <input required type="email" placeholder={t.labelEmail} className="w-full bg-black/40 border border-white/10 rounded p-3 text-white outline-none focus:border-[#C5A059] text-sm" value={leadEmail} onChange={e => setLeadEmail(e.target.value)} />
+                        
+                        <div className="flex gap-2">
+                            <div className="relative w-1/3">
+                                <button type="button" onClick={() => setIsCodeOpen(!isCodeOpen)} className="w-full h-full bg-black/40 border border-white/10 rounded p-3 text-white flex items-center justify-between text-xs">
+                                    <span>{phoneCode}</span><ChevronDown size={14} />
+                                </button>
+                                {isCodeOpen && (
+                                    <div className="absolute top-full left-0 w-[200px] bg-zinc-800 border border-white/10 max-h-48 overflow-y-auto z-[100] rounded mt-1 shadow-2xl">
+                                        <div className="p-2 sticky top-0 bg-zinc-800 border-b border-white/10 flex items-center gap-2">
+                                            <Search size={12} className="text-slate-500" />
+                                            <input autoFocus placeholder={t.searchCountry} className="w-full bg-black/20 text-white text-[10px] p-2 outline-none" value={searchCode} onChange={e => setSearchCode(e.target.value)} />
+                                        </div>
+                                        {filteredCodes.map(c => (
+                                            <button key={c.country} type="button" onClick={() => { setPhoneCode(c.code); setIsCodeOpen(false); }} className="w-full text-left p-3 text-[10px] text-slate-300 hover:bg-white/10 flex gap-2 border-b border-white/5">
+                                                <span>{c.flag}</span> <span className="flex-1">{c.country}</span> <span>{c.code}</span>
+                                            </button>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                            <input required placeholder={t.labelPhone} className="w-2/3 bg-black/40 border border-white/10 rounded p-3 text-white outline-none focus:border-[#C5A059] text-sm" value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} />
+                        </div>
+                    </div>
+                    
+                    <button type="submit" disabled={isSubmitting} className="w-full py-3 bg-[#C5A059] text-black font-bold rounded disabled:opacity-50 text-sm md:text-base">{isSubmitting ? t.sending : t.submitBtn}</button>
+                </form>
+            )}
 
-          <div className="bg-white/5 p-4 rounded-lg border border-white/10 max-w-xs mx-auto">
-             <p className="text-slate-400 text-xs mb-2">Your VIP Gift & Results have been sent to:</p>
-             <p className="text-white font-mono text-sm">{leadEmail}</p>
-          </div>
-
-          <p className="text-slate-500 text-xs">
-            One of our senior investment consultants will contact you shortly to confirm your gift.
-          </p>
-        </div>
-      )}
+            {step === 'success' && (
+                <div className="text-center space-y-4 md:space-y-6">
+                    <CheckCircle size={64} className="text-[#C5A059] mx-auto" />
+                    <h3 className="text-xl md:text-2xl font-serif text-white">{t.successTitle}</h3>
+                    <div className="bg-white/10 p-4 rounded-lg border border-white/10">
+                        <p className="text-slate-300 text-sm mb-1">{t.successScore}</p>
+                        <p className="text-3xl font-bold text-[#C5A059]">{score} / 10</p>
+                    </div>
+                    <p className="text-slate-300 italic text-sm px-4 leading-relaxed">
+                        "{t.successFunny}"
+                    </p>
+                    <button onClick={onClose} className="text-xs text-slate-500 hover:text-white underline mt-4">Close</button>
+                </div>
+            )}
+        </motion.div>
     </div>
   );
 }
