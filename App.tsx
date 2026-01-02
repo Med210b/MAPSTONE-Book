@@ -58,6 +58,7 @@ export default function App() {
   const [phoneCode, setPhoneCode] = useState('+971');
   const [isCodeOpen, setIsCodeOpen] = useState(false);
   const [searchCode, setSearchCode] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const langMenuRef = useRef<HTMLDivElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -84,7 +85,10 @@ export default function App() {
   const totalSpreads = Math.ceil(pagesContent.length / 2);
   const isLastPageSingle = pagesContent.length % 2 !== 0;
   const isAtLastSpread = currentPage === totalSpreads - 1;
-  const currentLangObj = LANGUAGES.find(l => l.code === currentLang);
+  
+  // --- THIS WAS THE MISSING LINE CAUSING THE ERROR ---
+  const currentLangObj = LANGUAGES.find(l => l.code === currentLang); 
+  // ---------------------------------------------------
 
   const handleOpenBook = () => {
     playFlipSound();
@@ -136,6 +140,40 @@ export default function App() {
   const filteredCodes = COUNTRY_CODES.filter(c => 
       c.country.toLowerCase().includes(searchCode.toLowerCase()) || c.code.includes(searchCode)
   );
+
+  const handleFormSubmit = async () => {
+    if (!formData.name || !formData.email || !formData.phone) {
+        alert("Please fill in all details.");
+        return;
+    }
+    setIsSubmitting(true);
+    
+    // YOUR LINK
+    const FORM_ENDPOINT = "https://formspree.io/f/mvzpweee"; 
+
+    try {
+      await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: { 
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            phone: `${phoneCode} ${formData.phone}`,
+            score: `${score} / 10`,
+            language: currentLang
+        })
+      });
+      setQuizStep('final');
+    } catch (error) {
+      console.error("Submission failed", error);
+      setQuizStep('final');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#150303] flex items-center justify-center p-0 relative font-sans overflow-hidden">
@@ -224,7 +262,10 @@ export default function App() {
                                 </div>
                                 <input placeholder={t.quiz.phone} className="w-2/3 bg-black/40 border border-white/20 rounded p-3 text-white" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} />
                             </div>
-                            <button onClick={() => setQuizStep('final')} className="w-full py-3 bg-[#C5A059] text-black font-bold rounded mt-4">{t.quiz.submit}</button>
+                            <button onClick={handleFormSubmit} disabled={isSubmitting} className="w-full py-3 bg-[#C5A059] text-black font-bold rounded mt-4 flex justify-center items-center">
+                                {isSubmitting ? <span className="animate-spin mr-2">⏳</span> : null}
+                                {t.quiz.submit}
+                            </button>
                         </div>
                     )}
 

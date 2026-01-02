@@ -124,7 +124,7 @@ export const TRANSLATIONS: any = {
     p8: { title: "أسلوب حياة فاخر", subtitle: "فوق الخيال.", text: "دبي تعرف الفخامة الحديثة. من المطاعم العالمية والأزياء الراقية إلى الشواطئ البكر وملاعب الجولف، أسلوب الحياة هنا لا يضاهى. يتمتع السكان بخدمات تعتبر امتيازات 5 نجوم في أماكن أخرى.", quote: "\"شمس، بحر، وأمان.\"", features: ["مطاعم ميشلان", "شواطئ خاصة", "تسوق عالمي"] },
     p9: { title: "استقرار اقتصادي", subtitle: "ملاذ آمن.", text: "يرتبط الدرهم الإماراتي بالدولار الأمريكي منذ 1997، مما يضمن انعدام مخاطر العملة. الاقتصاد متنوع وقوي وسريع النمو، مدفوعاً بقطاعات غير نفطية مثل السياحة والتكنولوجيا.", point1: "ربط العملة", point1Desc: "سعر ثابت: 1$ = 3.67 د.إ", point2: "نمو الناتج المحلي", point2Desc: "فائض مستمر.", point3: "تنوع", point3Desc: "اقتصاد مزدهر غير نفطي." },
     p10: { title: "رؤية 2040", subtitle: "خارطة المستقبل.", text: "تهدف خطة دبي الحضرية 2040 لجعل دبي أفضل مدينة للعيش. تشمل الخطة مضاعفة المساحات الخضراء وزيادة السكان إلى 5.8 مليون. الاستثمار الآن يعني الشراء في هذا النمو المستقبلي.", list: ["نمو سكاني لـ 5.8 مليون", "60% محميات طبيعية", "تحضر مستدام"], tagline: "استثمار في الغد، اليوم." },
-    p11_new: { title: "عاصمة السياحة", subtitle: "مغناطيس للعالم.", text: "دبي من أكثر المدن زيارة، تستقبل أكثر من 16 مليون سائح سنوياً. هذا التدفق المستمر يرفع الطلب الهائل على الإيجارات قصيرة الأجل، مما يضمن نسب إشغال عالية.", stat1: "17M+", stat1Label: "زوار سنوياً", stat2: "85%+", stat2Label: "إشغال الفنادق" },
+    p11_new: { title: "السياحة العالمية", subtitle: "مغناطيس للعالم.", text: "تستقطب دبي الملايين سنوياً، مما يرفع الطلب على الإيجارات.", stat1: "17M+", stat1Label: "زوار سنوياً", stat2: "85%+", stat2Label: "إشغال الفنادق" },
     p12_new: { title: "مركز الأعمال", subtitle: "مقر عالمي.", text: "مع أكثر من 40 منطقة حرة توفر ملكية أجنبية 100% و0% ضرائب شركات، تجذب دبي الشركات العالمية والناشئة. إنها المقر الإقليمي لشركات فورتشن 500.", list: ["ملكية أجنبية 100%", "مناطق حرة", "تكنولوجيا وتمويل"], quote: "\"حيث يلتقي العمل بالابتكار.\"" },
     p13_new: { title: "بنية تحتية عالمية", subtitle: "بنيت للتميز.", text: "تمتلك دبي بنية تحتية تنافس الأفضل عالمياً. من المدارس والجامعات الدولية إلى المستشفيات المعتمدة والسياحة العلاجية، توفر المدينة كل ما تحتاجه العائلة للازدهار.", point1: "التعليم", point1Desc: "جامعات عالمية.", point2: "الصحة", point2Desc: "مرافق طبية متطورة." },
     p14_new: { title: "فخامة مطلقة", subtitle: "حياة بلا مساومات.", text: "العيش في دبي يعني الاستيقاظ على مناظر الأفق، وقضاء عطلات نهاية الأسبوع على اليخوت، والتمتع بخدمة تسبق احتياجاتك. عقاراتنا توفر مسابح لامتناهية وشواطئ خاصة.", text2: "اختبر قمة الراحة." },
@@ -145,7 +145,7 @@ export const TRANSLATIONS: any = {
     p10: { title: "Visión 2040", subtitle: "Hoja de Ruta.", text: "El Plan Urbano Dubái 2040 busca hacer de Dubái la mejor ciudad para vivir. Incluye duplicar espacios verdes y aumentar la población a 5.8 millones. Invertir ahora es comprar en este crecimiento futuro.", list: ["Población a 5.8M", "60% Reservas Naturales", "Urbanismo Sostenible"], tagline: "Invertir en el mañana, hoy." },
     p11_new: { title: "Capital del Turismo", subtitle: "Un Imán Mundial.", text: "Dubái recibe más de 16 millones de turistas al año. Esta afluencia impulsa una inmensa demanda de alquileres a corto plazo, asegurando alta ocupación.", stat1: "17M+", stat1Label: "Visitantes Anuales", stat2: "85%+", stat2Label: "Ocupación Hotelera" },
     p12_new: { title: "Centro de Negocios", subtitle: "Sede Global.", text: "Con más de 40 zonas francas con 100% propiedad extranjera y 0% impuestos, Dubái atrae corporaciones globales. Es la sede regional de empresas Fortune 500.", list: ["100% Propiedad Extranjera", "Zonas Francas", "Tecnología y Finanzas"], quote: "\"Donde el negocio encuentra innovación.\"" },
-    p13_new: { title: "Infraestructura", subtitle: "Excelencia Construida.", text: "Dubái tiene una infraestructura de clase mundial. Desde escuelas internacionales hasta hospitales acreditados, la ciudad ofrece todo para que una familia prospere.", point1: "Educación", point1Desc: "Universidades globales.", point2: "Salud", point2Desc: "Instalaciones avanzadas." },
+    p13_new: { title: "Infraestructura", subtitle: "Excelencia Construida.", text: "Dubái tiene una infraestructura de clase mundial. Desde escuelas internacionales hasta hospitales acreditados, la ciudad ofrece todo para que una familia prospere.", point1: "Educación", point1Desc: "Universidades globales.", point2: "Salud", point2Desc: "Atención Avanzada." },
     p14_new: { title: "Lujo Supremo", subtitle: "Vida sin Compromisos.", text: "Vivir en Dubái es despertar con vistas al skyline y disfrutar de un servicio anticipado. Nuestras propiedades ofrecen piscinas infinitas y cines privados.", text2: "Experimente la cima del confort." },
     back: { title: "Contáctenos", websiteValue: "www.mapstonerealestate.com", emailValue: "contact@mapstonegroup.com", phoneValue: "+971-58-592-8787", copyright: "Mapstone Real Estate.", quizCta: "¡No pierda su regalo VIP!", quizBtn: "Tomar el Reto" },
     quiz: { title: "Desafío Inmobiliario", subtitle: "Obtenga 7/10 para su regalo VIP.", startBtn: "Iniciar Quiz", passTitle: "¡Eres Fuerte! 😎", failTitle: "Buen Intento", failMsg: "Necesitas 7/10 para ganar.", formTitle: "Reclamar Regalo", name: "Nombre Completo", email: "Correo", phone: "Teléfono", searchCode: "Buscar código...", submit: "Unirse a la Élite", final: "Bienvenido a la Élite," }
@@ -251,34 +251,278 @@ export const getPagesContent = (langCode: string = 'en', onStartQuiz?: () => voi
   const t = TRANSLATIONS[langCode] || TRANSLATIONS.en;
   
   const c = "h-full w-full bg-black text-white relative overflow-hidden";
-  const i = "relative z-10 p-6 flex flex-col h-full";
+  const i = "relative z-10 p-6 md:p-12 flex flex-col h-full overflow-y-auto custom-scrollbar";
 
   return [
-    <div key="p1" className={c}><div className="absolute inset-0 opacity-40"><img src="https://i.postimg.cc/NFWkXp2k/5435design.png" className="w-full h-full object-cover"/></div><div className={`${i} justify-center`}><h2 className="text-2xl font-serif mb-4">{t.p1.title}</h2><p className="text-sm">{t.p1.text1}</p></div></div>,
-    <div key="p2" className={c}><div className="absolute inset-0 opacity-40"><img src="https://i.postimg.cc/QCHHDDt1/Untitled-design14158916.png" className="w-full h-full object-cover"/></div><div className={`${i} justify-end`}><p className="text-xl font-serif italic">{t.p2.quote}</p></div></div>,
-    <div key="p3" className={c}><div className="absolute inset-0 opacity-40"><img src="https://i.postimg.cc/jjp8PqVN/ffffffffffffffffffffffffffffffff.png" className="w-full h-full object-cover"/></div><div className={i}><SectionTitle title={t.p3.title} subtitle={t.p3.subtitle} light /><div className="mt-4 space-y-2"><div className="bg-white/10 p-3 rounded flex justify-between"><span>{t.p3.income}</span><span className="text-[#C5A059]">0%</span></div></div></div></div>,
-    <div key="p4" className={c}><div className="absolute inset-0 opacity-40"><img src="https://i.postimg.cc/vZjxZc9B/111.png" className="w-full h-full object-cover"/></div><div className={`${i} justify-center`}><SectionTitle title={t.p4.title} subtitle={t.p4.subtitle} light /></div></div>,
-    <div key="p11" className={c}><div className="absolute inset-0 opacity-40"><img src="https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?w=800" className="w-full h-full object-cover"/></div><div className={`${i} justify-center`}><SectionTitle title={t.p11_new.title} subtitle={t.p11_new.subtitle} light /><p className="text-sm mt-4">{t.p11_new.text}</p></div></div>,
-    <div key="p12" className={c}><div className="absolute inset-0 opacity-40"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800" className="w-full h-full object-cover"/></div><div className={`${i} justify-end`}><SectionTitle title={t.p12_new.title} subtitle={t.p12_new.subtitle} light /><p className="text-sm mt-4">{t.p12_new.text}</p></div></div>,
-    <div key="p13" className={c}><div className="absolute inset-0 opacity-40"><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800" className="w-full h-full object-cover"/></div><div className={i}><SectionTitle title={t.p13_new.title} subtitle={t.p13_new.subtitle} light /><p className="text-sm mt-4">{t.p13_new.text}</p></div></div>,
-    <div key="p14" className={c}><div className="absolute inset-0 opacity-40"><img src="https://images.unsplash.com/photo-1512418490979-92798cec1380?w=800" className="w-full h-full object-cover"/></div><div className={`${i} justify-center`}><SectionTitle title={t.p14_new.title} subtitle={t.p14_new.subtitle} light /><p className="text-sm mt-4">{t.p14_new.text}</p></div></div>,
-    
-    // BACK COVER (CONTACT + QUIZ)
-    <div key="back" className="h-full w-full bg-black p-6 flex flex-col items-center justify-center text-center">
-        <img src={LOGO_URL} className="h-16 mb-4 opacity-80" />
-        <h3 className="text-xl font-serif text-[#C5A059] mb-4">{t.back.title}</h3>
-        <div className="space-y-2 text-xs mb-6">
-            <p className="text-white">{t.back.websiteValue}</p>
-            <p className="text-white">{t.back.emailValue}</p>
-            <p className="text-white">{t.back.phoneValue}</p>
+    // P1: Intro
+    <div key="p1" className={c} dir={langCode === 'ar' ? 'rtl' : 'ltr'}>
+      <div className="absolute inset-0 z-0 opacity-40"><img src="https://i.postimg.cc/NFWkXp2k/5435design.png" alt="Skyline" className="w-full h-full object-cover" /></div>
+      <div className={`${i} justify-center`}>
+        <h3 className="text-[#C5A059] font-bold uppercase tracking-widest mb-2 md:mb-4 text-[10px] md:text-xs">{t.p1.intro}</h3>
+        <h2 className="text-xl md:text-2xl font-serif font-bold text-white mb-4 md:mb-6">{t.p1.title}</h2>
+        <p className="text-neutral-200 mb-4 md:mb-6 text-xs md:text-sm leading-relaxed">{t.p1.text1}</p>
+        <div className="grid grid-cols-2 gap-4 mt-auto">
+          <div className="border-l-4 border-[#C5A059] pl-3 md:pl-4"><p className="text-lg md:text-xl font-bold">17M+</p><p className="text-[10px] md:text-xs text-neutral-400">{t.p1.stat1Label}</p></div>
+          <div className="border-l-4 border-[#C5A059] pl-3 md:pl-4"><p className="text-lg md:text-xl font-bold">3.5M+</p><p className="text-[10px] md:text-xs text-neutral-400">{t.p1.stat2Label}</p></div>
         </div>
-        <div className="w-full bg-[#C5A059]/10 border border-[#C5A059]/30 rounded p-3 animate-pulse cursor-pointer" onClick={onStartQuiz}>
-            <div className="flex items-center justify-center gap-2 text-[#C5A059] mb-1">
-                <Trophy size={14} /> <span className="text-xs font-bold uppercase">{t.back.quizCta}</span>
+      </div>
+    </div>,
+
+    // P2: Quote
+    <div key="p2" className={c} dir={langCode === 'ar' ? 'rtl' : 'ltr'}>
+      <div className="absolute inset-0 z-0 opacity-40"><img src="https://i.postimg.cc/QCHHDDt1/Untitled-design14158916.png" alt="Arch" className="w-full h-full object-cover" /></div>
+      <div className={`${i} justify-end pb-12 md:pb-16`}>
+        <p className="text-xl md:text-3xl font-serif italic mb-2 md:mb-4 leading-tight">{t.p2.quote}</p>
+        <p className="text-neutral-300 text-xs md:text-sm">{t.p2.subquote}</p>
+      </div>
+    </div>,
+
+    // P3: Tax
+    <div key="p3" className={c} dir={langCode === 'ar' ? 'rtl' : 'ltr'}>
+      <div className="absolute inset-0 z-0 opacity-40"><img src="https://i.postimg.cc/jjp8PqVN/ffffffffffffffffffffffffffffffff.png" alt="Tax Free" className="w-full h-full object-cover" /></div>
+      <div className={i}>
+        <SectionTitle title={t.p3.title} subtitle={t.p3.subtitle} light />
+        <p className="text-neutral-300 text-xs mb-4 leading-relaxed">{t.p3.text}</p>
+        <div className="space-y-2 md:space-y-4">
+          {[t.p3.income, t.p3.rental, t.p3.capital, t.p3.property].map((label, k) => (
+            <div key={k} className="bg-white/5 p-3 md:p-4 rounded border border-white/10 flex justify-between items-center">
+              <span className="font-bold text-xs md:text-base">{label}</span><span className="text-[#C5A059] font-bold text-lg md:text-xl">0%</span>
             </div>
-            <button className="bg-[#C5A059] text-black w-full py-2 rounded font-bold text-xs">{t.back.quizBtn}</button>
+          ))}
         </div>
-        <div className="text-[8px] text-slate-600 mt-auto pt-4">© {new Date().getFullYear()} {t.back.copyright}</div>
+      </div>
+    </div>,
+
+    // P4: Yields
+    <div key="p4" className={c} dir={langCode === 'ar' ? 'rtl' : 'ltr'}>
+      <div className="absolute inset-0 z-0 opacity-40"><img src="https://i.postimg.cc/vZjxZc9B/111.png" alt="Night" className="w-full h-full object-cover" /></div>
+      <div className={`${i} justify-center`}>
+        <SectionTitle title={t.p4.title} subtitle={t.p4.subtitle} light />
+        <p className="text-neutral-300 text-xs mb-4 leading-relaxed">{t.p4.text}</p>
+        <div className="my-4 space-y-2">
+            <div><p className="text-[#C5A059] text-xs font-bold">{t.p4.longTerm}</p><p className="text-xs">{t.p4.longTermDesc}</p></div>
+            <div><p className="text-[#C5A059] text-xs font-bold">{t.p4.shortTerm}</p><p className="text-xs">{t.p4.shortTermDesc}</p></div>
+        </div>
+        <MarketChart dark texts={t.p4.chart} />
+      </div>
+    </div>,
+
+    // P5: Security
+    <div key="p5" className={c} dir={langCode === 'ar' ? 'rtl' : 'ltr'}>
+      <div className="absolute inset-0 z-0 opacity-40"><img src="https://i.postimg.cc/xTgYjMvY/Untit.png" alt="Security" className="w-full h-full object-cover" /></div>
+      <div className={i}>
+        <SectionTitle title={t.p5.title} subtitle={t.p5.subtitle} light />
+        <p className="text-neutral-300 text-xs mb-4 leading-relaxed">{t.p5.text}</p>
+        <SecurityFeatures texts={t.p5.security} />
+        <PaymentPlan texts={t.p5.payment} />
+      </div>
+    </div>,
+
+    // P6: Visa
+    <div key="p6" className={c} dir={langCode === 'ar' ? 'rtl' : 'ltr'}>
+      <div className="absolute inset-0 z-0 opacity-40"><img src="https://i.postimg.cc/QMpkTQjJ/design.png" alt="Visa" className="w-full h-full object-cover" /></div>
+      <div className={i}>
+        <SectionTitle title={t.p6.title} subtitle={t.p6.subtitle} light />
+        <p className="text-neutral-300 text-xs mb-4 leading-relaxed">{t.p6.text}</p>
+        <ul className="space-y-3 md:space-y-4 my-4 md:my-8">
+            {t.p6.list.map((item: string, k: number) => (
+                <li key={k} className="flex gap-3 text-xs md:text-sm text-neutral-300"><CheckCircle2 className="text-[#C5A059] shrink-0" size={16}/>{item}</li>
+            ))}
+        </ul>
+        <p className="text-white italic text-xs mt-4">{t.p6.quote}</p>
+      </div>
+    </div>,
+
+    // P7: Connectivity
+    <div key="p7" className={c} dir={langCode === 'ar' ? 'rtl' : 'ltr'}>
+      <div className="absolute inset-0 z-0 opacity-50"><img src="https://i.postimg.cc/X75KZr9c/500.png" alt="Connectivity" className="w-full h-full object-cover" /></div>
+      <div className={i}>
+        <SectionTitle title={t.p7.title} subtitle={t.p7.subtitle} light />
+        <p className="text-neutral-300 text-xs mb-4 leading-relaxed">{t.p7.text}</p>
+        <div className="grid grid-cols-2 gap-4 mt-6">
+            <div className="bg-white/10 p-3 rounded backdrop-blur-md border border-white/5">
+                <Plane className="text-[#C5A059] mb-2" size={20} />
+                <p className="font-bold text-white text-sm">{t.p7.stat1}</p>
+                <p className="text-[10px] text-slate-300">{t.p7.stat1Desc}</p>
+            </div>
+            <div className="bg-white/10 p-3 rounded backdrop-blur-md border border-white/5">
+                <Anchor className="text-[#C5A059] mb-2" size={20} />
+                <p className="font-bold text-white text-sm">{t.p7.stat2}</p>
+                <p className="text-[10px] text-slate-300">{t.p7.stat2Desc}</p>
+            </div>
+        </div>
+      </div>
+    </div>,
+
+    // P8: Lifestyle
+    <div key="p8" className={c} dir={langCode === 'ar' ? 'rtl' : 'ltr'}>
+      <div className="absolute inset-0 z-0 opacity-40"><img src="https://i.postimg.cc/QNySKLwt/700.png" alt="Lifestyle" className="w-full h-full object-cover" /></div>
+      <div className={`${i} justify-center text-center`}>
+        <h2 className="text-2xl md:text-3xl font-serif text-white mb-2">{t.p8.title}</h2>
+        <p className="text-neutral-200 text-xs mb-6 px-4 leading-relaxed">{t.p8.text}</p>
+        <div className="flex justify-center gap-4 flex-wrap">
+            {t.p8.features.map((f: string, k: number) => (
+                <span key={k} className="bg-[#C5A059]/20 text-[#C5A059] px-3 py-1 rounded-full text-[10px] font-bold border border-[#C5A059]/30">{f}</span>
+            ))}
+        </div>
+        <p className="text-[#C5A059] italic mt-8 text-lg">{t.p8.quote}</p>
+      </div>
+    </div>,
+
+    // P9: Stability
+    <div key="p9" className={c} dir={langCode === 'ar' ? 'rtl' : 'ltr'}>
+       <div className="absolute inset-0 z-0 opacity-40"><img src="https://i.postimg.cc/2yMxsvhY/800.png" alt="Stability" className="w-full h-full object-cover" /></div>
+       <div className={i}>
+          <SectionTitle title={t.p9.title} subtitle={t.p9.subtitle} light />
+          <p className="text-neutral-300 text-xs mb-4 leading-relaxed">{t.p9.text}</p>
+          <div className="space-y-3 mt-4">
+            <div className="p-3 bg-white/5 border-l-2 border-[#C5A059] backdrop-blur-sm">
+                <h4 className="font-bold text-white text-xs md:text-sm">{t.p9.point1}</h4>
+                <p className="text-[10px] md:text-xs text-neutral-300">{t.p9.point1Desc}</p>
+            </div>
+            <div className="p-3 bg-white/5 border-l-2 border-[#C5A059] backdrop-blur-sm">
+                <h4 className="font-bold text-white text-xs md:text-sm">{t.p9.point2}</h4>
+                <p className="text-[10px] md:text-xs text-neutral-300">{t.p9.point2Desc}</p>
+            </div>
+            <div className="p-3 bg-white/5 border-l-2 border-[#C5A059] backdrop-blur-sm">
+                <h4 className="font-bold text-white text-xs md:text-sm">{t.p9.point3}</h4>
+                <p className="text-[10px] md:text-xs text-neutral-300">{t.p9.point3Desc}</p>
+            </div>
+          </div>
+       </div>
+    </div>,
+
+    // P10: Vision
+    <div key="p10" className={c} dir={langCode === 'ar' ? 'rtl' : 'ltr'}>
+       <div className="absolute inset-0 z-0 opacity-40"><img src="https://i.postimg.cc/nVPT985N/600.png" alt="Vision" className="w-full h-full object-cover" /></div>
+       <div className={`${i} justify-end`}>
+          <SectionTitle title={t.p10.title} subtitle={t.p10.subtitle} light />
+          <p className="text-neutral-300 text-xs mb-4 leading-relaxed">{t.p10.text}</p>
+          <div className="space-y-2 md:space-y-3 mb-4">
+            {t.p10.list.map((item: string, k: number) => (
+                <div key={k} className="flex gap-2 text-xs md:text-sm font-bold text-white"><MapPin size={16} className="text-[#C5A059] shrink-0"/>{item}</div>
+            ))}
+          </div>
+          <p className="text-[#C5A059] text-xs font-bold uppercase tracking-widest">{t.p10.tagline}</p>
+       </div>
+    </div>,
+
+    // P11 NEW: Global Tourism
+    <div key="p11_new" className={c} dir={langCode === 'ar' ? 'rtl' : 'ltr'}>
+       <div className="absolute inset-0 z-0 opacity-40">
+           <img src="https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?q=80&w=800&auto=format&fit=crop" alt="Tourism" className="w-full h-full object-cover" />
+       </div>
+       <div className={`${i} justify-center`}>
+          <SectionTitle title={t.p11_new.title} subtitle={t.p11_new.subtitle} light />
+          <p className="text-neutral-200 text-sm mb-6 leading-relaxed">{t.p11_new.text}</p>
+          <div className="grid grid-cols-2 gap-4">
+              <div className="bg-white/10 p-3 rounded backdrop-blur-md text-center">
+                  <p className="text-[#C5A059] text-xl font-bold">{t.p11_new.stat1}</p>
+                  <p className="text-[10px] uppercase text-white">{t.p11_new.stat1Label}</p>
+              </div>
+              <div className="bg-white/10 p-3 rounded backdrop-blur-md text-center">
+                  <p className="text-[#C5A059] text-xl font-bold">{t.p11_new.stat2}</p>
+                  <p className="text-[10px] uppercase text-white">{t.p11_new.stat2Label}</p>
+              </div>
+          </div>
+       </div>
+    </div>,
+
+    // P12 NEW: Business Hub
+    <div key="p12_new" className={c} dir={langCode === 'ar' ? 'rtl' : 'ltr'}>
+       <div className="absolute inset-0 z-0 opacity-40">
+           <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop" alt="Business" className="w-full h-full object-cover" />
+       </div>
+       <div className={`${i} justify-end`}>
+          <SectionTitle title={t.p12_new.title} subtitle={t.p12_new.subtitle} light />
+          <p className="text-neutral-200 text-xs mb-4 leading-relaxed">{t.p12_new.text}</p>
+          <ul className="space-y-3 my-4">
+              {t.p12_new.list.map((item: string, k: number) => (
+                  <li key={k} className="flex gap-3 text-xs md:text-sm text-neutral-300 backdrop-blur-sm bg-black/20 p-2 rounded">
+                      <Briefcase className="text-[#C5A059] shrink-0" size={16}/>{item}
+                  </li>
+              ))}
+          </ul>
+          <p className="text-white italic text-xs">{t.p12_new.quote}</p>
+       </div>
+    </div>,
+
+    // P13 NEW: Infrastructure (Edu/Health)
+    <div key="p13_new" className={c} dir={langCode === 'ar' ? 'rtl' : 'ltr'}>
+       <div className="absolute inset-0 z-0 opacity-40">
+           <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&auto=format&fit=crop" alt="Health" className="w-full h-full object-cover" />
+       </div>
+       <div className={i}>
+          <SectionTitle title={t.p13_new.title} subtitle={t.p13_new.subtitle} light />
+          <p className="text-neutral-200 text-xs mb-4 leading-relaxed">{t.p13_new.text}</p>
+          <div className="space-y-4 mt-4">
+             <div className="flex gap-4 items-center bg-white/5 p-3 rounded border-l-2 border-[#C5A059]">
+                 <GraduationCap className="text-white" size={24} />
+                 <div>
+                     <h4 className="text-white font-bold text-sm">{t.p13_new.point1}</h4>
+                     <p className="text-slate-400 text-xs">{t.p13_new.point1Desc}</p>
+                 </div>
+             </div>
+             <div className="flex gap-4 items-center bg-white/5 p-3 rounded border-l-2 border-[#C5A059]">
+                 <Users className="text-white" size={24} />
+                 <div>
+                     <h4 className="text-white font-bold text-sm">{t.p13_new.point2}</h4>
+                     <p className="text-slate-400 text-xs">{t.p13_new.point2Desc}</p>
+                 </div>
+             </div>
+          </div>
+       </div>
+    </div>,
+
+    // P14 NEW: Luxury Living
+    <div key="p14_new" className={c} dir={langCode === 'ar' ? 'rtl' : 'ltr'}>
+       <div className="absolute inset-0 z-0 opacity-40">
+           <img src="https://images.unsplash.com/photo-1512418490979-92798cec1380?q=80&w=800&auto=format&fit=crop" alt="Luxury" className="w-full h-full object-cover" />
+       </div>
+       <div className={`${i} justify-center text-center`}>
+          <div className="mx-auto mb-4 bg-[#C5A059]/20 p-3 rounded-full inline-block">
+              <Star className="text-[#C5A059]" size={32} />
+          </div>
+          <SectionTitle title={t.p14_new.title} subtitle={t.p14_new.subtitle} light />
+          <p className="text-neutral-200 text-sm mt-4 px-4 leading-relaxed backdrop-blur-sm p-2 rounded border border-white/10">{t.p14_new.text}</p>
+          <p className="text-[#C5A059] text-xs mt-4 font-serif italic">{t.p14_new.text2}</p>
+       </div>
+    </div>,
+
+    // P15: Back Cover (UPDATED WITH CONTACT & QUIZ)
+    <div key="p15_back" className="h-full w-full bg-black p-6 md:p-12 flex flex-col items-center justify-center text-center" dir={langCode === 'ar' ? 'rtl' : 'ltr'}>
+      <img src={LOGO_URL} alt="Logo" className="h-16 md:h-24 mb-6 md:mb-8 opacity-80" />
+
+      {/* CONTACT SECTION */}
+      <h3 className="text-xl md:text-2xl font-serif text-[#C5A059] mb-6 uppercase tracking-widest">{t.back.title}</h3>
+
+      <div className="space-y-4 text-sm md:text-base mb-8">
+          <div className="flex flex-col items-center">
+              <Globe size={18} className="text-[#C5A059] mb-1" />
+              <a href={`https://${t.back.websiteValue}`} target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#C5A059] transition-colors">{t.back.websiteValue}</a>
+          </div>
+          <div className="flex flex-col items-center">
+              <Mail size={18} className="text-[#C5A059] mb-1" />
+              <a href={`mailto:${t.back.emailValue}`} className="text-white hover:text-[#C5A059] transition-colors">{t.back.emailValue}</a>
+          </div>
+           <div className="flex flex-col items-center">
+              <Phone size={18} className="text-[#C5A059] mb-1" />
+              <a href={`tel:${t.back.phoneValue.replace(/-/g, '')}`} className="text-white hover:text-[#C5A059] transition-colors">{t.back.phoneValue}</a>
+          </div>
+      </div>
+
+      {/* QUIZ CTA */}
+      <div className="w-full max-w-xs bg-[#C5A059]/10 border border-[#C5A059]/30 rounded-lg p-3 animate-pulse cursor-pointer hover:bg-[#C5A059]/20 transition-colors" onClick={onStartQuiz}>
+        <div className="flex items-center justify-center gap-2 text-[#C5A059] mb-2">
+            <Trophy size={18} />
+            <span className="text-sm font-bold uppercase">{t.back.quizCta}</span>
+        </div>
+        <button className="bg-[#C5A059] text-black w-full py-3 rounded font-bold text-sm hover:scale-105 transition-transform">
+            {t.back.quizBtn}
+        </button>
+      </div>
+
+      <div className="text-[10px] text-slate-600 mt-auto pt-8">© {new Date().getFullYear()} {t.back.copyright}</div>
     </div>
   ];
 };
